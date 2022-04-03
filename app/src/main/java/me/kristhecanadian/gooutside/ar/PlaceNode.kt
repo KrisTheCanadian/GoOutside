@@ -50,9 +50,26 @@ class PlaceNode(
         if (placeRenderable != null) {
             return
         }
-
+        val renders = arrayOf(
+            R.layout.place_view,
+            R.layout.place_view1,
+            R.layout.place_view2,
+            R.layout.place_view3,
+            R.layout.place_view4,
+            R.layout.place_view5,
+            R.layout.place_view6,
+            R.layout.place_view7,
+            R.layout.place_view8,
+            R.layout.place_view9,
+            R.layout.place_view10,
+            R.layout.place_view11,
+            R.layout.place_view12,
+            R.layout.place_view13,
+            R.layout.place_view14,
+            R.layout.place_view15
+        )
         ViewRenderable.builder()
-            .setView(context, R.layout.place_view)
+            .setView(context, renders[(renders.indices).random()])
             .build()
             .thenAccept { renderable ->
                 setRenderable(renderable)

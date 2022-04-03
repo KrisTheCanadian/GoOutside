@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@mipmap/pin_full_color"/>
+        android:src="@mipmap/threed"/>
 
     <TextView
         android:id="@+id/placeName"

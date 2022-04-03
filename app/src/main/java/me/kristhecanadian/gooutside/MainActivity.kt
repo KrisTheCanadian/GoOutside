@@ -259,7 +259,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         placesService.nearbyPlaces(
             apiKey = apiKey,
             location = "${location.latitude},${location.longitude}",
-            radiusInMeters = 2000,
+            radiusInMeters = 200,
             placeType = "park"
         ).enqueue(
             object : Callback<NearbyPlacesResponse> {
