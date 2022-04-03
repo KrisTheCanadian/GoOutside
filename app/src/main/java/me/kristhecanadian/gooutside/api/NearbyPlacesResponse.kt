@@ -12,13 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.codelabs.findnearbyplacesar.ar
+package me.kristhecanadian.gooutside.api
 
-import android.Manifest
-import com.google.ar.sceneform.ux.ArFragment
+import me.kristhecanadian.gooutside.model.Place
+import com.google.gson.annotations.SerializedName
 
-class PlacesArFragment : ArFragment() {
+/**
+ * Data class encapsulating a response from the nearby search call to the Places API.
+ */
+data class NearbyPlacesResponse(
+   @SerializedName("results") val results: List<Place>
+)
 
-    override fun getAdditionalPermissions(): Array<String> =
-        listOf(Manifest.permission.ACCESS_FINE_LOCATION).toTypedArray()
-}

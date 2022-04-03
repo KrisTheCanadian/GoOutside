@@ -15,7 +15,7 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.google.codelabs.findnearbyplacesar">
+    package="com.google.codelabs.goOutside">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -57,7 +57,7 @@
             android:value="@string/googleMapApiKey" />
 
         <activity
-            android:name="com.google.codelabs.findnearbyplacesar.MainActivity"
+            android:name="me.kristhecanadian.gooutside.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

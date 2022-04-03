@@ -12,15 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.codelabs.findnearbyplacesar.ar
+package me.kristhecanadian.gooutside.ar
 
 import android.content.Context
+import android.net.Uri
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
+import com.google.ar.core.Anchor
+import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.Node
+import com.google.ar.sceneform.assets.RenderableSource
+import com.google.ar.sceneform.rendering.ModelRenderable
+import com.google.ar.sceneform.rendering.Renderable
 import com.google.ar.sceneform.rendering.ViewRenderable
-import com.google.codelabs.findnearbyplacesar.R
-import com.google.codelabs.findnearbyplacesar.model.Place
+import com.google.ar.sceneform.ux.ArFragment
+import com.google.ar.sceneform.ux.TransformableNode
+import com.google.codelabs.goOutside.R
+import me.kristhecanadian.gooutside.model.Place
+
 
 class PlaceNode(
     val context: Context,
@@ -68,4 +78,5 @@ class PlaceNode(
             (it as PlaceNode).textViewPlace?.visibility = View.GONE
         }
     }
+
 }

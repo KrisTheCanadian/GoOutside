@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.codelabs.findnearbyplacesar.model
+package me.kristhecanadian.gooutside.model
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.ar.sceneform.math.Vector3

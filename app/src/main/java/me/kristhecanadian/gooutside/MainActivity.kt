@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.codelabs.findnearbyplacesar
+package me.kristhecanadian.gooutside
 
 import android.Manifest
 import android.app.ActivityManager
@@ -25,6 +25,7 @@ import android.hardware.SensorManager
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -39,15 +40,21 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.ar.sceneform.AnchorNode
-import com.google.codelabs.findnearbyplacesar.api.NearbyPlacesResponse
-import com.google.codelabs.findnearbyplacesar.api.PlacesService
-import com.google.codelabs.findnearbyplacesar.ar.PlaceNode
-import com.google.codelabs.findnearbyplacesar.ar.PlacesArFragment
-import com.google.codelabs.findnearbyplacesar.model.Place
-import com.google.codelabs.findnearbyplacesar.model.getPositionVector
+import com.google.ar.sceneform.rendering.ModelRenderable
+import com.google.ar.sceneform.ux.ArFragment
+import com.google.codelabs.goOutside.R
+import me.kristhecanadian.gooutside.api.NearbyPlacesResponse
+import me.kristhecanadian.gooutside.api.PlacesService
+import me.kristhecanadian.gooutside.ar.PlaceNode
+import me.kristhecanadian.gooutside.ar.PlacesArFragment
+import me.kristhecanadian.gooutside.model.Place
+import me.kristhecanadian.gooutside.model.getPositionVector
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.function.Consumer
+import java.util.function.Function
+
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
 
@@ -79,14 +86,17 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             return
         }
         setContentView(R.layout.activity_main)
-
+        // AR PANE
         arFragment = supportFragmentManager.findFragmentById(R.id.ar_fragment) as PlacesArFragment
+        // MAP
         mapFragment =
             supportFragmentManager.findFragmentById(R.id.maps_fragment) as SupportMapFragment
 
         sensorManager = getSystemService()!!
         placesService = PlacesService.create()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+
 
         setUpAr()
         setUpMaps()
@@ -145,6 +155,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             placeNode.setOnTapListener { _, _ ->
                 showInfoWindow(place)
             }
+
 
             // Add the place in maps
             map?.let {
@@ -243,6 +254,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     }
 
     private fun getNearbyPlaces(location: Location) {
+        // TODO CHANGE THESES PLACES FROM GOOGLE MAPS TO FIREBASE LOCATIONS
         val apiKey = resources.getString(R.string.googleMapApiKey)
         placesService.nearbyPlaces(
             apiKey = apiKey,

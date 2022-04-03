@@ -22,7 +22,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <fragment android:name="com.google.codelabs.findnearbyplacesar.ar.PlacesArFragment"
+    <fragment android:name="me.kristhecanadian.gooutside.ar.PlacesArFragment"
         android:id="@+id/ar_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.google.codelabs.findlocalplacesinar"
+        applicationId "me.kristhecanadian.gooutside"
         minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
@@ -36,6 +36,9 @@ android {
 }
 
 dependencies {
+    // 3D models
+    implementation 'com.google.ar.sceneform:assets:1.15.0'
+
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
