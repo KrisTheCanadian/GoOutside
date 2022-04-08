@@ -23,15 +23,15 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+            ViewModelProvider(this)[DashboardViewModel::class.java]
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //val textView: TextView = binding.textDashboard
-//        dashboardViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+        val textView: TextView = binding.textdashboard
+        dashboardViewModel.text.observe(viewLifecycleOwner) {
+            textView.text = it
+        }
         return root
     }
 
