@@ -15,7 +15,7 @@
         android:id="@+id/navigation_dashboard"
         android:name="me.kristhecanadian.gooutside.ui.dashboard.DashboardFragment"
         android:label="@string/title_trophy"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_collection" />
 
     <fragment
         android:id="@+id/navigation_notifications"

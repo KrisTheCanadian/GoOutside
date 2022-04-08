@@ -62,27 +62,13 @@ class ArFragment : Fragment(), SensorEventListener {
     private var map: GoogleMap? = null
 
     private var _binding: FragmentArBinding? = null
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        val notificationsViewModel =
-//            ViewModelProvider(this)[ArViewModel::class.java]
-//
-//        _binding = FragmentArBinding.inflate(inflater, container, false)
-//        val root: View = binding.root
 
-//        val textView: TextView = binding.textNotifications
-//        notificationsViewModel.text.observe(viewLifecycleOwner) {
-////            textView.text = it
-//        }
-
-//        if (!isSupportedDevice()) {
-//            return
-//        }
         val viewOfLayout = inflater.inflate(R.layout.fragment_ar, container, false)
 
         // AR PANE
