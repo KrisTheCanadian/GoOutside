@@ -64,7 +64,7 @@
         android:id="@+id/imageView22"
         android:layout_width="98dp"
         android:layout_height="95dp"
-        android:src="@mipmap/collection_locked"
+        android:src="@mipmap/found_collection"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
