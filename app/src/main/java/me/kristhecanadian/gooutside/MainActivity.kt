@@ -25,7 +25,6 @@ import android.hardware.SensorManager
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -39,9 +38,8 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.ar.core.ArCoreApk
 import com.google.ar.sceneform.AnchorNode
-import com.google.ar.sceneform.rendering.ModelRenderable
-import com.google.ar.sceneform.ux.ArFragment
 import com.google.codelabs.goOutside.R
 import me.kristhecanadian.gooutside.api.NearbyPlacesResponse
 import me.kristhecanadian.gooutside.api.PlacesService
@@ -52,8 +50,6 @@ import me.kristhecanadian.gooutside.model.getPositionVector
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.function.Consumer
-import java.util.function.Function
 
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
@@ -95,7 +91,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         sensorManager = getSystemService()!!
         placesService = PlacesService.create()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
 
 
         setUpAr()
@@ -164,8 +159,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                         .position(place.geometry.location.latLng)
                         .title(place.name)
                 )
-                marker.tag = place
-                markers.add(marker)
+                marker?.tag = place
+                if (marker != null) {
+                    markers.add(marker)
+                }
             }
         }
     }
@@ -285,6 +282,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
 
     private fun isSupportedDevice(): Boolean {
+        val availability = ArCoreApk.getInstance().checkAvailability(this)
+        if (!availability.isSupported) {
+            return false
+        }
         val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         val openGlVersionString = activityManager.deviceConfigurationInfo.glEsVersion
         if (openGlVersionString.toDouble() < 3.0) {

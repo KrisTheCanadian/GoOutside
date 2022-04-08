@@ -15,5 +15,5 @@
 -->
 
 <resources>
-  <string name="app_name">GoOutside</string>
+    <string name="app_name">GoOutside</string>
 </resources>

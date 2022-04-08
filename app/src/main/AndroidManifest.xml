@@ -1,41 +1,23 @@
-<!--
- Copyright 2020 Google LLC
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
--->
-
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.google.codelabs.goOutside">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- Both "AR Optional" and "AR Required" apps require CAMERA permission. -->
-    <uses-permission android:name="android.permission.CAMERA" />
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <!-- Sceneform requires OpenGL ES 3.0 or later. -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Both "AR Optional" and "AR Required" apps require CAMERA permission. -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Sceneform requires OpenGL ES 3.0 or later. -->
     <uses-feature
         android:glEsVersion="0x00030000"
         android:required="true" />
-
-    <!-- Indicates that app requires ARCore ("AR Required"). Ensures the app is
+    <!--
+ Indicates that app requires ARCore ("AR Required"). Ensures the app is
      visible only in the Google Play Store on devices that support ARCore.
-     For "AR Optional" apps remove this line. -->
-    <uses-feature android:name="android.hardware.camera.ar" android:value="required"/>
-
+     For "AR Optional" apps remove this line.
+    -->
+    <uses-feature
+        android:name="android.hardware.camera.ar"
+        android:value="required" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
@@ -45,13 +27,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!-- Indicates that this app requires Google Play Services for AR ("AR Required") and causes
+        <activity
+            android:name="me.kristhecanadian.gooutside.Login"
+            android:exported="false" />
+        <!--
+         Indicates that this app requires Google Play Services for AR ("AR Required") and causes
              the Google Play Store to download and install Google Play Services for AR along with
-             the app. For an "AR Optional" app, specify "optional" instead of "required". -->
+             the app. For an "AR Optional" app, specify "optional" instead of "required".
+        -->
         <meta-data
             android:name="com.google.ar.core"
             android:value="required" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/googleMapApiKey" />
@@ -59,9 +45,11 @@
         <activity
             android:name="me.kristhecanadian.gooutside.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
