@@ -52,9 +52,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class MainActivity : AppCompatActivity(), SensorEventListener {
+class AR_Activity : AppCompatActivity(), SensorEventListener {
 
-    private val TAG = "MainActivity"
+    private val TAG = "AR_Activity"
 
     private lateinit var placesService: PlacesService
     private lateinit var arFragment: PlacesArFragment
@@ -274,7 +274,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                     }
 
                     val places = response.body()?.results ?: emptyList()
-                    this@MainActivity.places = places
+                    this@AR_Activity.places = places
                 }
             }
         )

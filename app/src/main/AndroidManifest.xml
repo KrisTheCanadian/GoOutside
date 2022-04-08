@@ -28,8 +28,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="me.kristhecanadian.gooutside.Login"
-            android:exported="false" />
+            android:name="me.kristhecanadian.gooutside.Landing"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!--
          Indicates that this app requires Google Play Services for AR ("AR Required") and causes
              the Google Play Store to download and install Google Play Services for AR along with
@@ -43,15 +48,9 @@
             android:value="@string/googleMapApiKey" />
 
         <activity
-            android:name="me.kristhecanadian.gooutside.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name="me.kristhecanadian.gooutside.AR_Activity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 
