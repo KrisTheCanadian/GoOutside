@@ -12,7 +12,7 @@
         android:layout_height="24dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="32dp"
         android:fontFamily="sans-serif-black"
         android:gravity="top"
         android:text="@string/lets_go_exp"
@@ -37,7 +37,7 @@
         app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.43" />
+        app:layout_constraintVertical_bias="0.37" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintVertical_bias="0.90999997" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
@@ -66,17 +66,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.29000002" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="56dp"
         android:layout_height="76dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="45dp"
         android:src="@mipmap/logo"
         app:layout_constraintBottom_toTopOf="@+id/lets_go_exp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -90,6 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.753"
         app:layout_constraintStart_toEndOf="@+id/lets_go_exp2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.22000003" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
