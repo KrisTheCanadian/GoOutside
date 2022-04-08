@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="me.kristhecanadian.gooutside.ui.ar.ArFragment"
+    tools:ignore="ExtraText">
+
+    <fragment
+        android:id="@+id/ar_fragment"
+        android:name="me.kristhecanadian.gooutside.ar.PlacesArFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        tools:context=".AR_Activity" />
+
+    <fragment
+        android:id="@+id/maps_fragment"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"/>
+
+</LinearLayout>

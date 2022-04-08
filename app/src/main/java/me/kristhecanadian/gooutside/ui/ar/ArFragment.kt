@@ -1,21 +1,6 @@
-// Copyright 2020 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
-package me.kristhecanadian.gooutside
+package me.kristhecanadian.gooutside.ui.ar
 
 import android.Manifest
-import android.app.ActivityManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.hardware.Sensor
@@ -25,10 +10,11 @@ import android.hardware.SensorManager
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
-import androidx.core.content.getSystemService
+import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -38,20 +24,20 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.ar.core.ArCoreApk
 import com.google.ar.sceneform.AnchorNode
+import me.kristhecanadian.gooutside.R
 import me.kristhecanadian.gooutside.api.NearbyPlacesResponse
 import me.kristhecanadian.gooutside.api.PlacesService
 import me.kristhecanadian.gooutside.ar.PlaceNode
 import me.kristhecanadian.gooutside.ar.PlacesArFragment
+import me.kristhecanadian.gooutside.databinding.FragmentArBinding
 import me.kristhecanadian.gooutside.model.Place
 import me.kristhecanadian.gooutside.model.getPositionVector
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
-class AR_Activity : AppCompatActivity(), SensorEventListener {
+class ArFragment : Fragment(), SensorEventListener {
 
     private val TAG = "AR_Activity"
 
@@ -75,25 +61,47 @@ class AR_Activity : AppCompatActivity(), SensorEventListener {
     private var currentLocation: Location? = null
     private var map: GoogleMap? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (!isSupportedDevice()) {
-            return
-        }
-        setContentView(R.layout.activity_main)
+    private var _binding: FragmentArBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+//        val notificationsViewModel =
+//            ViewModelProvider(this)[ArViewModel::class.java]
+//
+//        _binding = FragmentArBinding.inflate(inflater, container, false)
+//        val root: View = binding.root
+
+//        val textView: TextView = binding.textNotifications
+//        notificationsViewModel.text.observe(viewLifecycleOwner) {
+////            textView.text = it
+//        }
+
+//        if (!isSupportedDevice()) {
+//            return
+//        }
+        val viewOfLayout = inflater.inflate(R.layout.fragment_ar, container, false)
+
         // AR PANE
-        arFragment = supportFragmentManager.findFragmentById(R.id.ar_fragment) as PlacesArFragment
+        arFragment = childFragmentManager.findFragmentById(R.id.ar_fragment) as PlacesArFragment
         // MAP
         mapFragment =
-            supportFragmentManager.findFragmentById(R.id.maps_fragment) as SupportMapFragment
+            childFragmentManager.findFragmentById(R.id.maps_fragment) as SupportMapFragment
 
-        sensorManager = getSystemService()!!
+        sensorManager =
+            (requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager)
         placesService = PlacesService.create()
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
 
         setUpAr()
         setUpMaps()
+
+
+        return viewOfLayout
     }
 
     override fun onResume() {
@@ -143,7 +151,7 @@ class AR_Activity : AppCompatActivity(), SensorEventListener {
 
         for (place in places) {
             // Add the place in AR
-            val placeNode = PlaceNode(this, place)
+            val placeNode = PlaceNode(requireActivity().applicationContext, place)
             placeNode.setParent(anchorNode)
             placeNode.localPosition = place.getPositionVector(orientationAngles[0], currentLocation.latLng)
             placeNode.setOnTapListener { _, _ ->
@@ -168,9 +176,7 @@ class AR_Activity : AppCompatActivity(), SensorEventListener {
 
     private fun showInfoWindow(place: Place) {
         // Show in AR
-        val matchingPlaceNode = anchorNode?.children?.filter {
-            it is PlaceNode
-        }?.first {
+        val matchingPlaceNode = anchorNode?.children?.filterIsInstance<PlaceNode>()?.first {
             val otherPlace = (it as PlaceNode).place ?: return@first false
             return@first otherPlace == place
         } as? PlaceNode
@@ -184,14 +190,13 @@ class AR_Activity : AppCompatActivity(), SensorEventListener {
         matchingMarker?.showInfoWindow()
     }
 
-
     private fun setUpMaps() {
         mapFragment.getMapAsync { googleMap ->
             if (ActivityCompat.checkSelfPermission(
-                    this,
+                    requireActivity().applicationContext,
                     Manifest.permission.ACCESS_FINE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                    this,
+                    requireActivity().applicationContext,
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
@@ -225,10 +230,10 @@ class AR_Activity : AppCompatActivity(), SensorEventListener {
 
     private fun getCurrentLocation(onSuccess: (Location) -> Unit) {
         if (ActivityCompat.checkSelfPermission(
-                this,
+                requireActivity().applicationContext,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
+                requireActivity().applicationContext,
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
@@ -273,28 +278,27 @@ class AR_Activity : AppCompatActivity(), SensorEventListener {
                     }
 
                     val places = response.body()?.results ?: emptyList()
-                    this@AR_Activity.places = places
+                    this@ArFragment.places = places
                 }
             }
         )
     }
 
-
-    private fun isSupportedDevice(): Boolean {
-        val availability = ArCoreApk.getInstance().checkAvailability(this)
-        if (!availability.isSupported) {
-            return false
-        }
-        val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        val openGlVersionString = activityManager.deviceConfigurationInfo.glEsVersion
-        if (openGlVersionString.toDouble() < 3.0) {
-            Toast.makeText(this, "Sceneform requires OpenGL ES 3.0 or later", Toast.LENGTH_LONG)
-                .show()
-            finish()
-            return false
-        }
-        return true
-    }
+//    private fun isSupportedDevice(): Boolean {
+//        val availability = ArCoreApk.getInstance().checkAvailability(this)
+//        if (!availability.isSupported) {
+//            return false
+//        }
+//        val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+//        val openGlVersionString = activityManager.deviceConfigurationInfo.glEsVersion
+//        if (openGlVersionString.toDouble() < 3.0) {
+//            Toast.makeText(this, "Sceneform requires OpenGL ES 3.0 or later", Toast.LENGTH_LONG)
+//                .show()
+//            finish()
+//            return false
+//        }
+//        return true
+//    }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
     }
@@ -319,8 +323,12 @@ class AR_Activity : AppCompatActivity(), SensorEventListener {
         SensorManager.getOrientation(rotationMatrix, orientationAngles)
 
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
 
 val Location.latLng: LatLng
     get() = LatLng(this.latitude, this.longitude)
-
