@@ -50,6 +50,14 @@ class PlaceNode(
         if (placeRenderable != null) {
             return
         }
+        mock_database_prototyping()
+    }
+
+    private fun mock_database_prototyping() {
+        // We are mocking the database because we do not have any users.
+        // Usually we would store this on firebase and retrieve them dynamically
+        // For demo/ui purposes we will simplify this process by creating static views
+        // which have art pieces
         val renders = arrayOf(
             R.layout.place_view,
             R.layout.place_view1,
