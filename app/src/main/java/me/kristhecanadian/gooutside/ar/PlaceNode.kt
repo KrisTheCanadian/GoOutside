@@ -28,7 +28,7 @@ import com.google.ar.sceneform.rendering.Renderable
 import com.google.ar.sceneform.rendering.ViewRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
-import com.google.codelabs.goOutside.R
+import me.kristhecanadian.gooutside.R
 import me.kristhecanadian.gooutside.model.Place
 
 

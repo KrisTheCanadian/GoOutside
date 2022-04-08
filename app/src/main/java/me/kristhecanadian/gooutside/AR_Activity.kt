@@ -40,7 +40,6 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.ar.core.ArCoreApk
 import com.google.ar.sceneform.AnchorNode
-import com.google.codelabs.goOutside.R
 import me.kristhecanadian.gooutside.api.NearbyPlacesResponse
 import me.kristhecanadian.gooutside.api.PlacesService
 import me.kristhecanadian.gooutside.ar.PlaceNode
