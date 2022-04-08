@@ -20,8 +20,8 @@
     <string name="logo">logo</string>
     <string name="title_activity_dashboard">dashboard</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_trophy">Collection</string>
+    <string name="title_ar">Camera</string>
     <string name="search_title">Search</string>
     <string name="search_for_adventures">Search for adventures…</string>
     <string name="lets_go_exp">Lets Go Explore!</string>
