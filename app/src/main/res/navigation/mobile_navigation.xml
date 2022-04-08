@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="me.kristhecanadian.gooutside.ui.notifications.NotificationsFragment"
+        android:name="me.kristhecanadian.gooutside.ui.ar.ArFragment"
         android:label="@string/title_ar"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_ar" />
 </navigation>
