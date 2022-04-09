@@ -43,13 +43,15 @@
     </a>
 </p>
 
+<br>**Go Outside is an augmented reality app designed for our team's Software Engineering UI/UX class. This app serves as a PROTOTYPE to demonstrate how it would work if we had many users and a real time database using firebase, meaning it is not fully featured or functional due to the project time constrains.<br>
+
 # Project Information 🚀
 
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/)
 [![official JetBrains project](http://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 
-Go Outside is a augmented reality Prototype designed for our Software Engineering UI/UX Class. This app serves as only a prototype to demonstrate how the app would work if we had many users and a real time database using firebase and is not fully featured or functional due to the project time constrains.
+Lately, due to Covid-19, many indoor activities have been banned, and as gyms are closed, people cannot exercise as regularly. These restrictions have had a toll on both the mental and physical health of all members of society. As most people spend their daily time with their phones and enjoy using phone applications such as games and social media, our app, Go Outside, aims to bring art and technology together to help reduce users' stress and boredom, teach them more about art, culture and history of their city. It will also aim to encourage users to explore the city and improve their mental and physical health by doing more physical activity.
 
 ## Running & Building the project 🔨
 
@@ -73,7 +75,7 @@ googleMapApiKey = SuperSecret🔑
 ```
 
 ## Team Members 💪 🎉 🔥
-
+<div align="center">
 <table>
   <tr>
     <td align="center"><a href="https://github.com/kimdera"><img src="https://avatars.githubusercontent.com/u/39693234?v=4" width="100px;" alt=""/><br /><sub><b>Kimiya Derakhshani</b></sub></a></td>
@@ -86,6 +88,8 @@ googleMapApiKey = SuperSecret🔑
 <td align="center"><a href="https://github.com/martinsenecal"><img src="https://avatars.githubusercontent.com/u/38442896?v=4" width="100px;" alt=""/><br /><sub><b>Martin Senecal</b></sub></a></td>
   </tr>
 </table>
+</div>
+<br>
 
 # Concept App using Figma 🔥 👀
 
