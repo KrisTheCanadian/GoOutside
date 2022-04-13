@@ -108,4 +108,4 @@ googleMapApiKey = SuperSecret🔑
 
 ## License 📝
 
-This repository is available under the [Apache License](./LICENSE).
+This repository is available under the [Apache License](./LICENSE.md).
