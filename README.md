@@ -43,7 +43,7 @@
     </a>
 </p>
 
-<br>**Go Outside is an augmented reality app designed for our team's Software Engineering UI/UX class. This app serves as a PROTOTYPE to demonstrate how it would work if we had many users and a real time database using firebase, meaning it is not fully featured or functional due to the project time constrains.<br>
+<br>Go Outside is an augmented reality app designed for our team's Software Engineering UI/UX class. This app serves as a PROTOTYPE to demonstrate how it would work if we had many users and a real time database using firebase, meaning it is not fully featured or functional due to the project time constrains.<br>
 
 # Project Information 🚀
 
