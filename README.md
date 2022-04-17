@@ -45,6 +45,10 @@
 
 <br>Go Outside is an augmented reality app designed for our team's Software Engineering UI/UX class. This app serves as a PROTOTYPE to demonstrate how it would work if we had many users and a real time database using firebase, meaning it is not fully featured or functional due to the project time constrains.<br>
 
+## Video Teaser 📽 🍿
+
+Project video teaser can be found [here](https://drive.google.com/file/d/1EWG_kmt4snXrbmt7dAR3OXjNjQ3VawCV/view)
+
 # Project Information 🚀
 
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
@@ -75,6 +79,7 @@ googleMapApiKey = SuperSecret🔑
 ```
 
 ## Team Members 💪 🎉 🔥
+
 <div align="center">
 <table>
   <tr>
