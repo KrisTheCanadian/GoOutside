@@ -59,11 +59,22 @@ Lately, due to Covid-19, many indoor activities have been banned, and as gyms ar
 
 ## Running & Building the project 🔨
 
-- Make sure to add your Google API key for Google Maps in `local.properties`
+- Open the project in Android Studio
+- You need to setup a google cloud account and add the following APIs when creating your [key](https://developers.google.com/maps/documentation/android-sdk/get-api-key):
+  - Maps SDK for Android
+  - Places API
+  - ARCore Cloud Anchors API
+- Make sure to add your Google API key in `local.properties` - Note: The app will not work without it
+- Make sure you have an Android Device that supports AR with the latest ARcore support
+- Make sure your Android Device is [in developer mode](https://developer.android.com/studio/debug/dev-options)
+- You can pair your [Android Device using wifi](https://developer.android.com/studio/run/device) via wifi and run the app directly from Android Studio
+- The app will now be installed on your Android phone, you can search for "Go Outside" it will appear on your apps list. That way you can try it outside your home 💪
 
 > If you're having trouble please follow google's guide [here!](https://cloud.google.com/docs/authentication/api-keys)
+>
+> You may create an [issue](https://github.com/KrisTheCanadian/GoOutside/issues/new/choose) on this repository and we can help you set up the application.
 
-Example:
+Example local.properties:
 
 ```
 ## This file must *NOT* be checked into Version Control Systems,
@@ -73,10 +84,12 @@ Example:
 # For customization when using a Version Control System, please read the
 # header note.
 #Sat Apr 02 14:49:33 EDT 2022
-sdk.dir=/home/viking/Android/Sdk
+sdk.dir=/home/User/Android/Sdk
 
 googleMapApiKey = SuperSecret🔑
 ```
+
+> **Why is there no binary attached to this project?** Theses APIs costs money and the app only works with theses APIs enabled. To avoid someone reverse engineering the app and stealing the API key. We did not include a runnable APK. I hope you understand.
 
 ## Team Members 💪 🎉 🔥
 
